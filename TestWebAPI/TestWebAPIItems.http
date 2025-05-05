@@ -1,0 +1,78 @@
+@TestWebAPI_HostAddress = http://localhost:5015
+@TestGuid = 81307215-f789-4857-a456-cc02a1792024
+
+# Items
+GET {{TestWebAPI_HostAddress}}/api/Items/
+#get items list
+###
+GET {{TestWebAPI_HostAddress}}/api/Items/?Name=some
+#get items list filtered by Name
+###
+GET {{TestWebAPI_HostAddress}}/api/Items/{{TestGuid}}
+#get specific item by Id
+###
+DELETE {{TestWebAPI_HostAddress}}/api/Items/8f8390dd-3733-418f-82da-ce4ba8e820c0
+###
+PUT  {{TestWebAPI_HostAddress}}/api/Items/{{TestGuid}}
+#change item name only
+Content-Type: application/json
+{
+  "Name" : "Item RENAMED"
+}
+### 
+PUT  {{TestWebAPI_HostAddress}}/api/Items/{{TestGuid}}
+#change item price only
+Content-Type: application/json
+{
+  "Price" : 50.5
+}
+### 
+PUT  {{TestWebAPI_HostAddress}}/api/Items/{{TestGuid}}
+#change all Item properties
+Content-Type: application/json
+{
+  "Name" : "Item RENAMED AGAIN",
+  "Price" : 60.6
+}
+### 
+
+# below block is also used to seed DB with initial data
+POST {{TestWebAPI_HostAddress}}/api/Items/
+Content-Type: application/json
+{
+  "Name" : "Item 1",
+  "Price" : 10.1
+}
+###
+POST {{TestWebAPI_HostAddress}}/api/Items/
+Content-Type: application/json
+{
+  "Name" : "Item 2",
+  "Price" : 20.2
+}
+###
+POST {{TestWebAPI_HostAddress}}/api/Items/
+Content-Type: application/json
+{
+  "Name" : "Item 3",
+  "Price" : 30.3
+}
+###
+
+
+# this should fail
+POST {{TestWebAPI_HostAddress}}/api/Items/
+Content-Type: application/json
+{
+  "Name" : 4,
+  "Price" : 300.3
+}
+###
+# this should fail
+POST {{TestWebAPI_HostAddress}}/api/Items/
+Content-Type: application/json
+{
+  "Name" : "Item Name",
+  "Price" : -300.3
+}
+###

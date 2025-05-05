@@ -1,0 +1,86 @@
+@TestWebAPI_HostAddress = http://localhost:5015
+@TestGuid = db08ad81-df99-463e-8ab0-5adbe0192ec7
+
+
+# Orders
+#get orders list
+GET {{TestWebAPI_HostAddress}}/api/Orders/
+###
+#get orders list with filter (status=5 means "New|Completed" )
+GET {{TestWebAPI_HostAddress}}/api/Orders/?status=5
+###
+#get specific Order by Id
+GET {{TestWebAPI_HostAddress}}/api/Orders/{{TestGuid}}
+###
+DELETE {{TestWebAPI_HostAddress}}/api/Orders/28619454-8bdb-4fc6-8844-7613b1f357d3
+###
+#change order address only via PUT
+PUT  {{TestWebAPI_HostAddress}}/api/Orders/{{TestGuid}}
+Content-Type: application/json
+{
+  "Address" : "Address UPDATED"
+}
+### 
+#change Order status and total only
+PUT  {{TestWebAPI_HostAddress}}/api/Orders/{{TestGuid}}
+Content-Type: application/json
+{
+  "Status" : 4,
+  "Total" : 500.5
+}
+### 
+#change all Order properties
+PUT  {{TestWebAPI_HostAddress}}/api/Orders/{{TestGuid}}
+Content-Type: application/json
+{
+  "Address" : "Address UPDATED AGAIN",
+  "Status" : 1,
+  "Total" : 600.6
+}
+### 
+
+
+# below block is also used to seed DB with initial data
+POST {{TestWebAPI_HostAddress}}/api/Orders/
+Content-Type: application/json
+{
+  "Address" : "Address 11",
+  "Status" : 1,
+  "Total" : 1100.11
+}
+###
+POST {{TestWebAPI_HostAddress}}/api/Orders/
+Content-Type: application/json
+{
+  "Address" : "Address 2",
+  "Status" : 2,
+  "Total" : 200.2
+}
+###
+POST {{TestWebAPI_HostAddress}}/api/Orders/
+Content-Type: application/json
+{
+  "Address" : "Address 3",
+  "Status" : 4,
+  "Total" : 300.3
+}
+###
+
+
+# this should fail
+POST {{TestWebAPI_HostAddress}}/api/Orders/
+Content-Type: application/json
+{
+  "Status" : 4,
+  "Total" : 300.3
+}
+###
+# this should fail
+POST {{TestWebAPI_HostAddress}}/api/Orders/
+Content-Type: application/json
+{
+  "Address" : "Some address",
+  "Status" : 4,
+  "Total" : -300.3
+}
+###
