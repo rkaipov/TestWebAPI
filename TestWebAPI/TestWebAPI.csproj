@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TestWebAPI.Entities\TestWebAPI.DataModels.csproj" />
+    <ProjectReference Include="..\TestWebAPI.DataModels\TestWebAPI.DataModels.csproj" />
   </ItemGroup>
 
 </Project>

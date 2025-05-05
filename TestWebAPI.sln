@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebAPI", "TestWebAPI\Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebAPI.Tests", "TestWebAPI.Tests\TestWebAPI.Tests.csproj", "{07598DBE-3C4B-4F0D-AAD2-F5A50DBD0385}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebAPI.DataModels", "TestWebAPI.Entities\TestWebAPI.DataModels.csproj", "{41EEDE5B-E59F-43BE-92A1-077BB0A35536}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebAPI.DataModels", "TestWebAPI.DataModels\TestWebAPI.DataModels.csproj", "{41EEDE5B-E59F-43BE-92A1-077BB0A35536}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
